@@ -1,131 +1,59 @@
-function setup() {
-  createCanvas(400, 400);
-}
+// zootopia:Essa Cidade é o Bicho, LIVRE Infantil/Comédia 
+// irmao urso, LIVRE :Infantil/Fantasia
+// diarios de um vampiro, 16 :Ação/Aventura/Drama/Romance/Suspense
+// fate: a saga winx, 16 : Terror/Ação/Drama/Aventura/Ficção científica/Fantasia sombria/Ficção supernatural
+// shadowhunters, 16 :  Fantasia/Romance/Drama/Terror/Ação/Aventura/Ficção científica/Sobrenatural/Mistério
 
-function draw() {
-  background(220);
-}
-function setup() {
-  createCanvas(600, 600);
-}
-
-function draw() {
-  background("rgb(87,45,102)");
-}
+let campoIdade;
+let campoFantasia;
+let campoAventura;
 
 function setup() {
-  createCanvas(600, 600);
-}
-
-function draw() {
-  background("#8C369B");
-}
-function setup() {
-  createCanvas(600, 600);
-}
-
-function draw() {
-  background("#652A6F");
-    rect(0, 0, 100, 150)
-}
-function setup() {
-  createCanvas(600, 600);
+  createCanvas(800, 400);
+  createElement("h2", "Recomendador de filmes");
+  createSpan("Sua idade:");
+  campoIdade = createInput("5");
+  campoFantasia = createCheckbox("Gosta de fantasia?");
+  campoAventura = createCheckbox("Gosta de aventura?");
 }
 
 function draw() {
   background("white");
+  let idade = campoIdade.value();
+  let gostaDeFantasia = campoFantasia.checked();
+  let gostaDeAventura = campoAventura.checked();
+  let recomendacao = geraRecomendacao(idade, gostaDeFantasia, gostaDeAventura);
 
-    fill("red")
-    rect(0, 0, 100, 150)
-}
-function setup() {
-  createCanvas(600, 600);
-}
-
-function draw() {
-  background("white");
-
-    stroke("blue")
-    fill("red")
-    rect(0, 0, 100, 150)
-}
-function setup() {
-  createCanvas(600, 600);
+  fill(color(76, 0, 115));
+  textAlign(CENTER, CENTER);
+  textSize(38);
+  text(recomendacao, width / 2, height / 2);
 }
 
-function draw() {
-  background("white");
-
-  stroke("blue")
-  fill("red")
-  rect(100, 250, 100, 150)
-}
-function setup() {
-  createCanvas(600, 600);
-}
-
-function draw() {
-  background("white");
-
-  stroke("blue")
-  fill("red")
-  rect(mouseX, mouseY, 20, 35)
-}
-function setup() {
-  createCanvas(600, 600);
-}
-
-function draw() {
-  background("white");
-
-  stroke("blue")
-  fill("red")
-  
-  console.log(mouseIsPressed)
-  rect(mouseX, mouseY, 20, 35)
-}
-function setup() {
-  createCanvas(600, 600);
-}
-
-function draw() {
-  background("white");
-
-  stroke("blue")
-  fill("red")
-  
-  // console.log(mouseIsPressed)
-  rect(mouseX, mouseY, 20, 35)
-}
-function setup() {
-  createCanvas(600, 600);
-}
-
-function draw() {
-  background("white");
-
-  stroke("blue")
-  fill("red")
-  
-  // console.log(mouseIsPressed)
-  
-  if(mouseIsPressed) {
-      rect(mouseX, mouseY, 20, 35)
-  } 
-}
-function setup() {
-  createCanvas(600, 600);
-  background("white");
-}
-
-function draw() {
-  stroke("blue");
-  fill("red");
-
-  // console.log(mouseIsPressed)
-
-  if (mouseIsPressed) {
-    rect(mouseX, mouseY, 20, 35);
+function geraRecomendacao(idade, gostaDeFantasia, gostaDeAventura) {
+  if (idade >= 01) {
+    if (idade >= 16) {
+      return "zootopia:Essa Cidade é o Bicho";
+    } else {
+      if (idade >= 12) {
+        if(gostaDeFantasia || gostaDeAventura) {
+          return "zootopia:Essa Cidade é o Bicho";          
+        } else{
+         return "diarios de um vampiro";
+        }
+      } else {
+        if (gostaDeFantasia) {
+          return "fate: a saga winx";
+        } else {
+          return "shadowhunters";
+        }
+      }
+    }
+  } else {
+    if (gostaDeFantasia) {
+      return "irmao urso";
+    } else {
+      return "";
+    }
   }
 }
-
